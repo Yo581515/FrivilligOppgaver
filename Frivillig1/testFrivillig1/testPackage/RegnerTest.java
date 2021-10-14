@@ -12,7 +12,7 @@ public class RegnerTest {
 	
 	@Test
 	public void testRoud() {
-		assertEquals(3.9, r.round(3.94, 1));
+		assertEquals(3.9, r.round(3.94,  1));
 	}
 	
 	@Test

@@ -23,7 +23,7 @@ public class ValidatorTest {
 	public void nullTemperatuerInput() {
 		String temperatur = null;
 		String valg = "CTF";
-		assertFalse(v.erGyldig(temperatur, valg));
+		assertFalse(v.erGyldig(temperatur,  valg));
 	}
 	
 	@Test
