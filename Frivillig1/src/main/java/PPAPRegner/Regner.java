@@ -17,8 +17,6 @@ public class Regner extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=ISO-8859-1");
-		PrintWriter out = response.getWriter();
 
 		String temperatur = request.getParameter("temperatur");
 		String temperaturMedFjernetMellomRom = temperatur.replaceAll(" ", "");
