@@ -25,6 +25,8 @@ public class Regner extends HttpServlet {
 
 		String valg = request.getParameter("valg");
 
+//		C  &#8451;
+//		F  &#8457;
 		if (Validator.erGyldig(temperaturMedFjernetMellomRom, valg)) {
 			double svar = 0.0;
 			double temp = Double.parseDouble(temperaturMedFjernetMellomRom);
@@ -32,6 +34,10 @@ public class Regner extends HttpServlet {
 			if (valg.equals("CTF")) {
 
 				if (temp >= -273.15) {
+					svar = CTF(temp);
+					String CTF = "<h1>Temperaturomregning resultat</h1>" + "<h1>" + temp + " &#8451;" + " = " + svar
+							+ " &#8457;" + "</h1>";
+					printUtSvar(response, CTF);
 
 				} else {
 					printUtSvar(response, FIEL_MELDING);
@@ -39,7 +45,10 @@ public class Regner extends HttpServlet {
 
 			} else {
 				if (temp >= -459.67) {
-
+					svar = FTC(temp);
+					String FTC = "<h1>Temperaturomregning resultat</h1>" + "<h1>" + temp + " &#8457;" + " = " + svar
+							+ " &#8451;" + "</h1>";
+					printUtSvar(response, FTC);
 				} else {
 					printUtSvar(response, FIEL_MELDING);
 				}
@@ -50,7 +59,7 @@ public class Regner extends HttpServlet {
 		}
 	}
 
-	public static void printUtSvar( HttpServletResponse response, String s) throws IOException {
+	public static void printUtSvar(HttpServletResponse response, String s) throws IOException {
 		response.setContentType("text/html; charset=ISO-8859-1");
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE html>");
@@ -61,7 +70,8 @@ public class Regner extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println(s);
-		out.println("<a href=\"http://localhost:8080/Frivillig1/index.html\" style=\"color:blue;\" style=\"text-decoration: underline;\">En gang til</a>");
+		out.println(
+				"<a href=\"http://localhost:8080/Frivillig1/index.html\" style=\"color:blue;\" style=\"text-decoration: underline;\">En gang til</a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
