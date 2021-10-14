@@ -7,19 +7,19 @@ import org.junit.Test;
 import PPAPRegner.Regner;
 
 public class RegnerTest {
-	
+
 	Regner r = new Regner();
-	
+
 	@Test
 	public void testRoud() {
-		assertEquals(3.9, r.round(3.94,  1));
+		assertEquals(3.9, r.round(3.94, 1));
 	}
-	
+
 	@Test
 	public void testRoud2() {
 		assertEquals(4, r.round(3.98938, 1));
 	}
-	
+
 	/**
 	 * Tester Celsius til Fahrenheit
 	 */
@@ -27,7 +27,7 @@ public class RegnerTest {
 	public void CTF() {
 		assertEquals(33.8, r.CTF(1));
 	}
-	
+
 	/**
 	 * Tester Fahrenheit til Celsius
 	 */
