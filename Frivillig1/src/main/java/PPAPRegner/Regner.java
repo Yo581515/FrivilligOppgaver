@@ -74,9 +74,9 @@ public class Regner extends HttpServlet {
 		out.println("</html>");
 	}
 
-	private static double round(double value, int precision) {
+	public static double round(double value, int precision) {
 		int scale = (int) Math.pow(10, precision);
-		return (double) Math.round(value * scale) / scale;
+		return ((double) Math.round(value * scale)) / scale;
 	}
 
 	public static double CTF(double input) {
