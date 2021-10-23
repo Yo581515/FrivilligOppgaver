@@ -41,10 +41,10 @@ public class Opplysninger extends HttpServlet {
 			out.println("</html>");
 
 		} else {
-			String feilmelding = "hello ny kar, set inn dit navn";
+			String melding = "hello ny kar, set inn dit navn";
 			String feilkode = request.getParameter("feilkode");
 			if (feilkode != null && feilkode.equals("invalidusername")) {
-				feilmelding = "Ugyldig brukernavn. Proov igjen.";
+				melding = "Ugyldig brukernavn. Proov igjen.";
 			}
 
 			out.println("<!DOCTYPE html>");
@@ -54,7 +54,7 @@ public class Opplysninger extends HttpServlet {
 			out.println("<title>sider som husker deg</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<p style=\"color:red;\">" + feilmelding + "</p>");
+			out.println("<p style=\"color:red;\">" + melding + "</p>");
 			out.println("<form action=\"Opplysninger\" " + "method=\"post\">");
 			out.println("  <fieldset>");
 			out.println("    <legend>Personlige Opplysninger</legend>");
