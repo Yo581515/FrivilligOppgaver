@@ -33,7 +33,9 @@ public class Opplysninger extends HttpServlet {
 			out.println("<title>hei</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1 style=\"color:green;\">hei   " + forNavn + " " + etterNavn + "   du var her sist  "
+			out.println("<h1>hei   " + forNavn + " " + etterNavn + "</h1>");
+			
+			out.println("<h1 style=\"color:green;\" >"
 					+ sistbesokt + "</h1>");
 			out.println("</body>");
 			out.println("</html>");
@@ -74,13 +76,10 @@ public class Opplysninger extends HttpServlet {
 		String etterNavn = request.getParameter("etterNavn");
 		String fN = forNavn.replaceAll(" ", "");
 		String eN = etterNavn.replaceAll(" ", "");
-		System.out.println(fN);
-		System.out.println(eN);
-
 		if (Validator.erGyldig(fN, eN)) {
 
-			CookieUtil.addCookieToResponse(response, "forNavn", fN);
-			CookieUtil.addCookieToResponse(response, "etterNavn", eN);
+			CookieUtil.addCookieToResponse(response, "forNavn", forNavn);
+			CookieUtil.addCookieToResponse(response, "etterNavn", etterNavn);
 			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString());
 			response.sendRedirect("Opplysninger");
 		} else {
