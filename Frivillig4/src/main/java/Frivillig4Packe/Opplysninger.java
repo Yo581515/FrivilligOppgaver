@@ -23,7 +23,7 @@ public class Opplysninger extends HttpServlet {
 		String etterNavn = CookieUtil.getCookieFromRequest(request, "etterNavn");
 		String sistbesokt = CookieUtil.getCookieFromRequest(request, "sistbesokt");
 
-		CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString());
+		
 
 		if (sistbesokt != null && forNavn != null && etterNavn != null) {
 			out.println("<!DOCTYPE html>");
@@ -81,6 +81,7 @@ public class Opplysninger extends HttpServlet {
 
 			CookieUtil.addCookieToResponse(response, "forNavn", fN);
 			CookieUtil.addCookieToResponse(response, "etterNavn", eN);
+			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString());
 			response.sendRedirect("Opplysninger");
 		} else {
 			response.sendRedirect("Opplysninger" + "?feilkode=invalidusername");
