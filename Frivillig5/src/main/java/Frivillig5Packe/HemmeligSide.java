@@ -47,6 +47,7 @@ public class HemmeligSide extends HttpServlet {
 
 			// Inn noe kode her for "Du er innlogget som <bruker>"?
 			out.println("Du er innloget inn som: " + brukernavn + "<br />");
+			out.println("<h1>Den hemmelige siden !!!");
 
 			out.println("<form action=\"" + LOGOUT_URL + "\" method=\"get\">");
 			out.println("<fieldset>");
