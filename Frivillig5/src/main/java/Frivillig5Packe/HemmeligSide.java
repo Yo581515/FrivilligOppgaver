@@ -49,15 +49,18 @@ public class HemmeligSide extends HttpServlet {
 			out.println("Du er innloget inn som: " + brukernavn + "<br />");
 			out.println("<h1>Den hemmelige siden !!!");
 
-			out.println("<form action=\"" + LOGOUT_URL + "\" method=\"get\">");
-			out.println("<fieldset>");
+			out.println("<form action=\"" + HEMELIGSIDE_URL + "\" method=\"post\">");
 			out.println("<p><input type=\"submit\" value=\"Logg ut\" /></p>");
-			out.println("</fieldset>");
 			out.println("</form>");
 
 			out.println("</body>");
 			out.println("</html>");
 
 		}
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+            response.sendRedirect(LOGOUT_URL);
 	}
 }

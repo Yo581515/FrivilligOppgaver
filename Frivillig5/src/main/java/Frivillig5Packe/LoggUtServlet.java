@@ -24,7 +24,7 @@ public class LoggUtServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
     	
         // Utlogging av bruker ...
-        
+    	LoggInnUtil.loggUt(request);
         response.setContentType("text/html; charset=ISO-8859-1");
 
         PrintWriter out = response.getWriter();
