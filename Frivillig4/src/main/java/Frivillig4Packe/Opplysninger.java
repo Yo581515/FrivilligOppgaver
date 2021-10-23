@@ -23,8 +23,6 @@ public class Opplysninger extends HttpServlet {
 		String etterNavn = CookieUtil.getCookieFromRequest(request, "etterNavn");
 		String sistbesokt = CookieUtil.getCookieFromRequest(request, "sistbesokt");
 
-		
-
 		if (sistbesokt != null && forNavn != null && etterNavn != null) {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
@@ -33,10 +31,9 @@ public class Opplysninger extends HttpServlet {
 			out.println("<title>hei</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1>hei   " + forNavn + " " + etterNavn + "</h1>");
-			
-			out.println("<h1 style=\"color:green;\" >"
-					+ sistbesokt + "</h1>");
+			out.println("<h1>hei   " + forNavn + " " + etterNavn + ", du var her sist</h1>");
+
+			out.println("<h1 style=\"color:green;\" >" + sistbesokt + "</h1>");
 			out.println("</body>");
 			out.println("</html>");
 
@@ -76,15 +73,16 @@ public class Opplysninger extends HttpServlet {
 		String etterNavn = request.getParameter("etterNavn");
 		String fN = forNavn.replaceAll(" ", "");
 		String eN = etterNavn.replaceAll(" ", "");
-		if (Validator.erGyldig(fN, eN)) {
-
-			CookieUtil.addCookieToResponse(response, "forNavn", forNavn,15);
-			CookieUtil.addCookieToResponse(response, "etterNavn", etterNavn,15);
-			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString(),15);
-			response.sendRedirect("Opplysninger");
-		} else {
+		if (!Validator.erGyldig(fN, eN)) {
 			response.sendRedirect("Opplysninger" + "?feilkode=invalidusername");
+		} else {
+			int sek = 15;
+			CookieUtil.addCookieToResponse(response, "forNavn", forNavn, sek);
+			CookieUtil.addCookieToResponse(response, "etterNavn", etterNavn, sek);
+			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString(), sek);
+			response.sendRedirect("Opplysninger");
 		}
+
 	}
 
 }
