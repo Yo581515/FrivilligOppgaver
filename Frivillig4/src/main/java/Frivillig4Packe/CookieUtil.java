@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieUtil {
 
 	private final static String CHARACTER_ENCODING = "UTF-8";
-	private final static int MAX_AGE_IN_SECONDS = 15;
+//	private final static int MAX_AGE_IN_SECONDS = 15;
 
-	public static void addCookieToResponse(HttpServletResponse response, String navn, String verdi) {
+	public static void addCookieToResponse(HttpServletResponse response, String navn, String verdi, int sekunder) {
 		try {
 			Cookie cookie = new Cookie(navn, URLEncoder.encode(verdi, CHARACTER_ENCODING));
-			cookie.setMaxAge(MAX_AGE_IN_SECONDS);
+			cookie.setMaxAge(sekunder);
 			response.addCookie(cookie);
 		} catch (UnsupportedEncodingException e) {
 			// Should never happen

@@ -78,9 +78,9 @@ public class Opplysninger extends HttpServlet {
 		String eN = etterNavn.replaceAll(" ", "");
 		if (Validator.erGyldig(fN, eN)) {
 
-			CookieUtil.addCookieToResponse(response, "forNavn", forNavn);
-			CookieUtil.addCookieToResponse(response, "etterNavn", etterNavn);
-			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString());
+			CookieUtil.addCookieToResponse(response, "forNavn", forNavn,15);
+			CookieUtil.addCookieToResponse(response, "etterNavn", etterNavn,15);
+			CookieUtil.addCookieToResponse(response, "sistbesokt", LocalDateTime.now().toString(),15);
 			response.sendRedirect("Opplysninger");
 		} else {
 			response.sendRedirect("Opplysninger" + "?feilkode=invalidusername");
