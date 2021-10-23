@@ -11,8 +11,8 @@ public class tester {
 		String b="bdhfhA";
 		String c="";
 		
-		System.out.println(a.matches(LETTERS));
-		System.out.println(b.matches(LETTERS));
+		System.out.println(a.matches("^"+LETTERS+"$"));
+		System.out.println(b.matches("^"+LETTERS+"$"));
 		System.out.println(c.equals(null));
 		
 		
